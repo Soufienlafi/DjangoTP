@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter fournisseur{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Ajouter Fournisseur</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="id_nom" class="col-sm-3 col-form-label text-right">Nom:</label>
+                            <div class="col-sm-9">
+                                {{ form.nom }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="id_adresse" class="col-sm-3 col-form-label text-right">Adresse:</label>
+                            <div class="col-sm-9">
+                                {{ form.adresse }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="id_email" class="col-sm-3 col-form-label text-right">Email:</label>
+                            <div class="col-sm-9">
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="id_telephone" class="col-sm-3 col-form-label text-right">Téléphone:</label>
+                            <div class="col-sm-9">
+                                {{ form.telephone }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary">Enregistrer fournisseur</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <h2 class="text-center">Liste de fournisseurs</h2>
+            {% for fournisseur in fournisseurs %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Nom fournisseur: {{ fournisseur.nom }}</h5>
+                        <p class="card-text">Adresse fournisseur: {{ fournisseur.adresse }}</p>
+                        <p class="card-text">Email fournisseur: {{ fournisseur.email }}</p>
+                        <p class="card-text">Téléphone fournisseur: {{ fournisseur.telephone }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

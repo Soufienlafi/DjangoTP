@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">S'inscrire</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table">
+                        {% for field in form %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                            </tr>
+                            {% for error in field.errors %}
+                                <tr>
+                                    <td></td>
+                                    <td class="alert alert-danger">{{ error }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            <div class="text-center">
+                <small>
+                    Déjà inscrit? <a href="{% url 'login' %}">Se connecter</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du Post</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Détails du Post : {{ post.title }}</h1>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="author">Auteur:</label>
+                    <input type="text" class="form-control" id="author" value="{{ post.author }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="created_on">Date de création:</label>
+                    <input type="text" class="form-control" id="created_on" value="{{ post.created_on }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="content">Contenu:</label>
+                    <textarea class="form-control" id="content" rows="5" readonly>{{ post.content }}</textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="/media/{{ post.image }}" class="img-fluid" alt="{{ post.title }}">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="{% url 'modifier_post' post.pk %}" class="btn btn-warning mr-2">Modifier post</a>
+                <a href="{% url 'supprimer_post' post.pk %}" class="btn btn-danger">Supprimer post</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

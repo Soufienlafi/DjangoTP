@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Posts</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .post-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><a href="{% url 'creer_post' %}" class="btn btn-primary">Ajouter post</a></h2>
+        <h1>Liste des posts</h1>
+        <br>
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'detail_post' post.pk %}">Détails de {{ post.title }}</a></h5>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" class="img-fluid post-image" alt="{{ post.title }}">
+                            {% endif %}
+                            <p class="card-text">{{ post.content }}</p>
+                            <div class="text-right">
+                                <a href="{% url 'modifier_post' post.pk %}" class="btn btn-warning">Modifier post</a>
+                                <a href="{% url 'supprimer_post' post.pk %}" class="btn btn-danger">Supprimer post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
