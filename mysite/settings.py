@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -137,3 +138,4 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 
 #CRISPY_TEMPLATE_PACK =
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
